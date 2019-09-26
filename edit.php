@@ -8,11 +8,13 @@ if(isset($_POST['update']))
     $id = $_POST['id'];
 
     $name=$_POST['name'];
-    $mobile=$_POST['mobile'];
+    $username=$_POST['username'];
     $email=$_POST['email'];
+    $password=$_POST['password'];
+
 
     // update user data
-    $result = mysqli_query($mysqli, "UPDATE users SET name='$name',email='$email',mobile='$mobile' WHERE id=$id");
+    $result = mysqli_query($mysqli, "UPDATE users SET name='$name',email='$email',username='$username',password='$password'' WHERE id=$id");
 
     // Redirect to homepage to display updated user in list
     header("Location: index.php");
@@ -30,7 +32,9 @@ while($user_data = mysqli_fetch_array($result))
 {
     $name = $user_data['name'];
     $email = $user_data['email'];
-    $mobile = $user_data['mobile'];
+    $username = $user_data['username'];
+    $password = $user_data['password'];
+
 }
 ?>
 <html>
@@ -53,8 +57,12 @@ while($user_data = mysqli_fetch_array($result))
                 <td><input type="text" name="email" value=<?php echo $email;?>></td>
             </tr>
             <tr> 
-                <td>Mobile</td>
-                <td><input type="text" name="mobile" value=<?php echo $mobile;?>></td>
+                <td>Username</td>
+                <td><input type="text" name="username" value=<?php echo $username;?>></td>
+            </tr>
+             <tr> 
+                <td>Password</td>
+                <td><input type="text" name="password" value=<?php echo $password;?>></td>
             </tr>
             <tr>
                 <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>

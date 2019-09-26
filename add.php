@@ -18,10 +18,13 @@
                 <td><input type="text" name="email"></td>
             </tr>
             <tr> 
-                <td>Mobile</td>
-                <td><input type="text" name="mobile"></td>
+                <td>Username</td>
+                <td><input type="text" name="username"></td>
             </tr>
             <tr> 
+                <td>Password</td>
+                <td><input type="password" name="password"></td>
+            </tr>
                 <td></td>
                 <td><input type="submit" name="Submit" value="Add"></td>
             </tr>
@@ -34,13 +37,14 @@
     if(isset($_POST['Submit'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $mobile = $_POST['mobile'];
+        $username = $_POST['username'];
+        $password =$_POST['password'];
 
         // include database connection file
         include_once("config.php");
 
         // Insert user data into table
-        $result = mysqli_query($mysqli, "INSERT INTO users(name,email,mobile) VALUES('$name','$email','$mobile')");
+        $result = mysqli_query($mysqli, "INSERT INTO users(name,email,username,password) VALUES('$name','$email','$username','$password')");
 
         // Show message when user added
         echo "User added successfully. <a href='index.php'>View Users</a>";
